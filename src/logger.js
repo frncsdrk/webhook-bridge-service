@@ -1,7 +1,14 @@
 const config = require('config'),
+  fs = require('fs')
   winston = require('winston')
 
 const loggerConfig = config.get('service.server.logger')
+
+// ensure logs directory exists
+if (!fs.existsSync(loggerConfig.logs_path)) {
+  fs.mkdirSync(loggerConfig.logs_path);
+}
+
 module.exports = winston.createLogger({
   level: 'info',
   levels: winston.config.syslog.levels,
