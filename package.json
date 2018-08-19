@@ -1,0 +1,33 @@
+{
+  "name": "webhook-bridge-service",
+  "version": "0.1.0",
+  "description": "a node.js service to receive and bridge webhook requests to other services",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frncsdrk/webhook-bridge-service.git"
+  },
+  "author": "frncsdrk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frncsdrk/webhook-bridge-service/issues"
+  },
+  "homepage": "https://github.com/frncsdrk/webhook-bridge-service#readme",
+  "private": true,
+  "dependencies": {
+    "config": "^2.0.1",
+    "got": "^9.0.0",
+    "js-yaml": "^3.12.0",
+    "restify": "^7.2.1",
+    "restify-errors": "^6.1.1",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
