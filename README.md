@@ -24,10 +24,22 @@ after installing of dependencies with `npm i`
 
 ### /push
 
+POST - webhook push route
+
+req
+
 - query
   - id - service configuration identifier
   - hash - for some mild security
 - body - webhook body
+
+### /status
+
+GET - service status
+
+res
+
+- {string} message
 
 ## configuration
 

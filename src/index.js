@@ -158,6 +158,16 @@ server.post('/push', (req, res, next) => {
     })
 })
 
+server.get('/status', (req, res, next) => {
+  return helpers.respond({
+    data: {
+      message: 'OK'
+    },
+    next,
+    res
+  })
+})
+
 server.listen(serverConfig.port, () => {
   console.log('%s listening at %s', server.name, server.url)
 })
