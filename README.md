@@ -22,7 +22,7 @@ after installing of dependencies with `npm i`
 
 ## routes
 
-### /push
+### /webhooks/push
 
 POST - webhook push route
 
@@ -96,5 +96,5 @@ service:
 
 - config
 - got
-- restify
+- express
 - winston
