@@ -10,8 +10,7 @@ const logger = require('./../logger')
 
 const router = express.Router()
 
-router.post('/push', (req, res, next) => {
-  // id must be present
+const validateIdPresent = (req, res, next) => {
   if (!req.query.id) {
     const err = new helpers.errors.NoIdError()
     logger.log({
@@ -24,6 +23,11 @@ router.post('/push', (req, res, next) => {
       res
     })
   }
+}
+
+router.post('/push', (req, res, next) => {
+  // id must be present
+  validateIdPresent(req, res, next)  
   // verify service config exists
   const servicesConfig = config.get('service.services')
   const serviceName = req.query.id

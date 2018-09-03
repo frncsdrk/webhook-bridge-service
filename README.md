@@ -2,6 +2,7 @@ webhook-bridge-service
 ===
 
 a node.js service to receive and bridge (bitbucket) webhook requests to other services
+> prototype stage
 
 ## a word on security
 
