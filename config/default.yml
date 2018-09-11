@@ -9,7 +9,8 @@ service:
     port: 9000
   services:
     example:
-      push_url: example.com/push
+      push_urls:
+        - example.com/push
       branch: master
       # tag: true
       hash: default_hash

@@ -60,7 +60,8 @@ service:
     port: 9000
   services:
     example:
-      push_url: example.com/push
+      push_urls:
+        - example.com/push
       branch: master
       # tag: true
       hash: default_hash
@@ -84,7 +85,8 @@ service:
     port: 8080
   services:
     user_service:
-      push_url: user.yourdomain.com/deploy
+      push_urls:
+        - user.yourdomain.com/deploy
       branch: master
       hash: custom_hash
     config_service:

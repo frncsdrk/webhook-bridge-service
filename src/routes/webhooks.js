@@ -27,7 +27,7 @@ const validateIdPresent = (req, res, next) => {
 
 router.post('/push', (req, res, next) => {
   // id must be present
-  validateIdPresent(req, res, next)  
+  validateIdPresent(req, res, next)
   // verify service config exists
   const servicesConfig = config.get('service.services')
   const serviceName = req.query.id
@@ -124,38 +124,41 @@ router.post('/push', (req, res, next) => {
     })
   }
 
-  got(
-    servicesConfig[serviceName].push_url,
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        id: config.get('service.server.id'),
-        hash: config.get('service.server.hash')
+  for (let i = 0; i < servicesConfig[serviceName].push_urls.length; i++) {
+    const pushUrl = servicesConfig[serviceName].push_urls[i]
+    got(
+      pushUrl,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          id: config.get('service.server.id'),
+          hash: config.get('service.server.hash')
+        })
+      }
+    )
+      .then(res => {
+        logger.log({
+          level: 'info',
+          message: res.statusCode + ' - ' + res.body
+        })
+        return helpers.respond({
+          data: res.body,
+          next,
+          res
+        })
       })
-    }
-  )
-    .then(res => {
-      logger.log({
-        level: 'info',
-        message: res.statusCode + ' - ' + res.body
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: err.message
+        })
+        return helpers.respond({
+          err,
+          next,
+          res
+        })
       })
-      return helpers.respond({
-        data: res.body,
-        next,
-        res
-      })
-    })
-    .catch(err => {
-      logger.log({
-        level: 'error',
-        message: err.message
-      })
-      return helpers.respond({
-        err,
-        next,
-        res
-      })
-    })
+  }
 })
 
 module.exports = router
