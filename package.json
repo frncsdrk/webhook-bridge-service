@@ -20,14 +20,14 @@
   "homepage": "https://github.com/frncsdrk/webhook-bridge-service#readme",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "config": "^2.0.1",
-    "express": "^4.16.3",
-    "got": "^9.0.0",
-    "js-yaml": "^3.12.0",
-    "winston": "^3.0.0"
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "js-yaml": "^4.1.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "nodemon": "^2.0.14"
   }
 }
